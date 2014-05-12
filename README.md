@@ -1,17 +1,20 @@
-= rails-has-valid gem
+# rails-has-valid gem
 
 Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
 
-== Usage
+## Usage
 
 * Add rails-has-valid to your Gemfile
 
+```
 	gem 'rails-has-valid', '0.0.0'
+```
 
-* Run +bundle install+
+* Run `bundle install`
 
 * Define list of attributes you want to partially validate in your model
 
+```
 	# user.rb
 	class User < ActiveRecord::Base
 		# ...
@@ -21,9 +24,11 @@ Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
 			}
 		# ...
 	end
+```
 
 * Use the following methods on your models
 
+```
 	# users_controller.rb
 	user = User.new
 
@@ -56,10 +61,11 @@ Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
 	# raise ActiveRecord::RecordInvalid exception otherwise
 	#
 	user.update_attributes_if_has_valid!( { email: 'new@email.com' }, User::VALIDATE_ATTRIBUTES[:update])	
+```
 
 It's been tested with Rails 4.1+ only but will most likely work with Rails 3+ as well.
 
-== Contributing to rails-has-valid
+## Contributing to rails-has-valid
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet.
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it.
@@ -69,7 +75,7 @@ It's been tested with Rails 4.1+ only but will most likely work with Rails 3+ as
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-== Copyright
+## Copyright
 
 Copyright (c) 2014 Juraj Masar. See LICENSE.txt for
 further details.
