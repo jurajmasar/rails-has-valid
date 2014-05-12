@@ -20,7 +20,7 @@ Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
 		# ...
 			VALIDATE_ATTRIBUTES = {
 				create: [:email, :subscribed],
-				update: create.merge([:password])
+				update: create.concat([:password])
 			}
 		# ...
 	end
