@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/rails-has-valid.rb",
+    "rails-has-valid.gemspec",
     "test/helper.rb",
     "test/test_rails-has-valid.rb"
   ]
