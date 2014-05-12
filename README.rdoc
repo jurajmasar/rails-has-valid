@@ -1,6 +1,63 @@
-= rails-has-valid
+= rails-has-valid gem
 
-Description goes here.
+Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
+
+== Usage
+
+* Add rails-has-valid to your Gemfile
+
+	gem 'rails-has-valid', '0.0.0'
+
+* Run +bundle install+
+
+* Define list of attributes you want to partially validate in your model
+
+	# user.rb
+	class User < ActiveRecord::Base
+		# ...
+			VALIDATE_ATTRIBUTES = {
+				create: [:email, :subscribed],
+				update: create.merge([:password])
+			}
+		# ...
+	end
+
+* Use the following methods on your models
+
+	# users_controller.rb
+	user = User.new
+
+	#
+	# validate given attributes only
+	#
+	user.has_valid?(User::VALIDATE_ATTRIBUTES[:create])
+	# => true
+
+	# 
+	# save object if given parameters are valid
+	# return false otherwise
+	#
+	user.save_if_has_valid(User::VALIDATE_ATTRIBUTES[:update])
+
+	# 
+	# save object if given parameters are valid
+	# raise ActiveRecord::RecordInvalid exception otherwise
+	#
+	user.save_if_has_valid!(User::VALIDATE_ATTRIBUTES[:update])	
+
+	#
+	# update object attributes to given values if given attributes are valid
+	# return false otherwise
+	#
+	user.update_attributes_if_has_valid( { email: 'new@email.com' }, User::VALIDATE_ATTRIBUTES[:update])
+
+	#
+	# update object attributes to given values if given attributes are valid
+	# raise ActiveRecord::RecordInvalid exception otherwise
+	#
+	user.update_attributes_if_has_valid!( { email: 'new@email.com' }, User::VALIDATE_ATTRIBUTES[:update])	
+
+It's been tested with Rails 4.1+ only but will most likely work with Rails 3+ as well.
 
 == Contributing to rails-has-valid
  
