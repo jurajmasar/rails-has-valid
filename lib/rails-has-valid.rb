@@ -18,21 +18,20 @@ if defined?(ActiveRecord)
 			end
 
 			#
-			# Duplicate object and run ActiveRecord validations
-			#
-			object = self.dup
-			object.valid?
-
-			#
 			# Clear previous validation errors
 			#
-			errors.clear
+			self.errors.clear
+
+			# 
+			# Run validations
+			# 
+			self.valid?
 
 			#
-			# Add validation errors for validated_attributes
+			# Remove validation errors for attributes we don't want to validate
 			#
-			object.errors.to_h.each do |key, value|
-				errors.add(key, value) if validated_attributes.include?(key)
+			(self.errors.messages.keys - validated_attributes).each do |key|
+				self.errors.delete(key)
 			end
 
 			errors.none?
