@@ -7,7 +7,7 @@ Partial validation of ActiveRecord objects in Ruby on Rails 4+ made simple.
 * Add rails-has-valid to your Gemfile
 
 ```
-	gem 'rails-has-valid', '0.0.0'
+	gem 'rails-has-valid'
 ```
 
 * Run `bundle install`
